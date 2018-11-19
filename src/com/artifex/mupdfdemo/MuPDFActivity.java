@@ -36,14 +36,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
 
+import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
+import org.zywx.wbpalmstar.plugin.uexpdf.CloseActivityReceiver;
+import org.zywx.wbpalmstar.plugin.uexpdf.util.LocalBroadcastUtil;
+
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.concurrent.Executor;
-
-import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
-import org.zywx.wbpalmstar.plugin.uexpdf.CloseActivityReceiver;
-import org.zywx.wbpalmstar.plugin.uexpdf.util.LocalBroadcastUtil;
 
 class ThreadPerTaskExecutor implements Executor {
 	public void execute(Runnable r) {
@@ -301,6 +301,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				mFileName = savedInstanceState.getString("FileName");
 			}
 		}
+
+
+
+
+
 		if (core == null) {
 			Intent intent = getIntent();
 			byte buffer[] = null;
@@ -372,6 +377,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 					core = openFile(path);
 				}
 				SearchTaskResult.set(null);
+
 			}
 			if (core != null && core.needsPassword()) {
 				requestPassword(savedInstanceState);
@@ -380,6 +386,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			if (core != null && core.countPages() == 0) {
 				core = null;
 			}
+
 		}
 		if (core == null) {
 			AlertDialog alert = mAlertBuilder.create();
@@ -397,6 +404,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 					finish();
 				}
 			});
+
 			alert.show();
 			return;
 		}

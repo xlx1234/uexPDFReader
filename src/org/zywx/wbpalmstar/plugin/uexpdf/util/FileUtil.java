@@ -1,14 +1,14 @@
 package org.zywx.wbpalmstar.plugin.uexpdf.util;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import android.content.Context;
+import android.os.Environment;
 
 import org.zywx.wbpalmstar.base.BUtility;
 import org.zywx.wbpalmstar.engine.EBrowserView;
 
-import android.content.Context;
-import android.os.Environment;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 /**
  * @author waka
@@ -39,13 +39,13 @@ public class FileUtil {
 			} else {
 				fileName = filePath;
 			}
-			return assetToSd(context, filePath, fileName);
+			return sandbox(context, filePath, fileName);
 		} else {
 			return filePath;
 		}
 	}
 
-	public static String assetToSd(Context ctx, String inFileName, String outFileName) {
+	public static String sandbox(Context ctx, String inFileName, String outFileName) {
 		@SuppressWarnings("unused")
 		int total = 0;
 		try {
@@ -55,8 +55,8 @@ public class FileUtil {
 			}
 
 			if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-				String sd = Environment.getExternalStorageDirectory().getAbsolutePath();
-				String path = sd + "/uexPdf/";
+				String  sand = ctx.getFilesDir().getAbsolutePath();
+				String path = sand  + "/Cache/";
 				File filePath = new File(path);
 				if (!filePath.exists()) {
 					filePath.mkdirs();

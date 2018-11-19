@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexPDFReader" version="4.0.1" build="1">
-        <info>1: 添加View接口</info>
+        uexName="uexPDFReader" version="4.0.3" build="3">
+        <info>3:复制时创建文件根目录</info>
+        <build>2:添加参数,添加解密功能,添加回调</build>
+        <build>1: 添加View接口</build>
         <build>0: 4.0插件</build>
     </plugin>
 </uexplugins>
